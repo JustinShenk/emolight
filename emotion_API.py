@@ -25,8 +25,6 @@ class Emotion_API(object):
 
     @classmethod
     def get_emotions(self, image_path, local=True):
-
-        self.config = get_conf()
         """ Send image to Microsoft/Oxford emotion API."""
         headers = dict()
         headers['Ocp-Apim-Subscription-Key'] = self.config['Microsoft']['api']
