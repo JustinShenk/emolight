@@ -42,24 +42,9 @@ class Emotion_API(object):
         result, callback = self.processRequest(json, data, headers, params)
         print(headers)
 
-        if result is not None:  # For debugging only
+        if result is not None:
             print("Emotions found:", result)
         return result, callback
-
-        try:
-            conn = http.client.HTTPSConnection('api.projectoxford.ai')
-            conn.request("POST", "/emotion/v1.0/recognize?%s" %
-                         params, body, headers)
-            response = conn.getresponse()
-            data = response.read().decode('utf-8')
-            print(data)
-            conn.close()
-            json_data = json.loads(data)
-
-            return json_data, callback
-
-        except Exception as e:
-            print(("[Errno {}] ".format(e)))
 
     @classmethod
     def processRequest(self, json, data, headers, params):
@@ -121,5 +106,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # `url_path` to Imgur image.
     main()
