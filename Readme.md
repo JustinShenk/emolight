@@ -26,12 +26,12 @@ Install fswebcam with `sudo apt-get install fswebcam`.
 
 Get a [Microsoft Emotion API key](https://azure.microsoft.com/en-us/try/cognitive-services/?api=emotion-api) (free trial).
 
-For setting the light with a single image run
-`sudo python emolight.py -s`
+For setting the LED strip with a single image run
+`sudo python emolight.py -s`.
 
-To run the script indefintely, run `sudo python emolight.py`
+To run the script indefinitely, run `sudo python emolight.py`.
 
-Run the script with a new image every minute with `sudo python emolight.py -d 60`
+Run the script with a new image every minute with `sudo python emolight.py -d 60`.
 
 ## TODO
  - [ ] Add local neural network implementation (eg, Caffe)
