@@ -1,3 +1,2 @@
-{
-	"emotion_api": "MY_API_HERE"
-}
+[Microsoft]
+emotion_api = MY_API_HERE
