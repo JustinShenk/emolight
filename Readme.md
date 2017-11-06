@@ -9,7 +9,9 @@ This script can be used for controlling WS281X LED strips with a Raspberry Pi. S
 
 ## Getting started
 
-First install the [rpi_ws281x Library](https://learn.adafruit.com/neopixels-on-raspberry-pi/software#compile-and-install-rpi-ws281x-library).
+#### Install dependencies
+
+First install the [rpi_ws281x Library](https://learn.adafruit.com/neopixels-on-raspberry-pi/software#compile-and-install-rpi-ws281x-library) on your Raspberry Pi.
 
 Install some dependencies:
 
@@ -25,12 +27,14 @@ cd rpi_ws281x
 scons
 ```
 
-Now you can install the Python library from the `rpi_ws281x/python` directory.
+Now install the Python library from the `rpi_ws281x/python` directory.
 
 ```sh
 cd python
 python ./setup.py build
 ```
+
+#### Fetch emolight
 
 Clone the repository install dependencies:
 ```sh
@@ -39,13 +43,13 @@ cd emolight
 pip install -r requirements.txt
 ```
 
-### Webcam
+#### Webcam
 If using a webcam, install fswebcam with `sudo apt-get install fswebcam`.
 
-### Emotion Detection
+#### Emotion Detection
 Get a [Microsoft Emotion API key](https://azure.microsoft.com/en-us/try/cognitive-services/?api=emotion-api) (free trial) and add your key to `MY_API` in `emotion_API.py`.
 
-### Start emolight
+#### Start emolight
 For setting the LED strip with a single image run
 `sudo python emolight.py -s`.
 
@@ -57,3 +61,4 @@ Run the script with a new image every minute with `sudo python emolight.py -d 60
  - [ ] Add local neural network implementation (eg, Caffe)
  - [ ] Add Google Cloud Vision API
  - [ ] Add picamera support
+ - [ ] Add make file
