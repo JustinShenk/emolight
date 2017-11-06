@@ -129,6 +129,6 @@ if __name__ == '__main__':
         while True:
             display_color(strip, color)
     if args.delay:
-        main(single=args.single, args.delay)
+        main(single=args.single, delay=args.delay)
     else:
         main(single=args.single)
