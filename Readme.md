@@ -34,4 +34,5 @@ To run the script indefintely, run `sudo python emolight.py`
 Run the script with a new image every minute with `sudo python emolight.py -d 60`
 
 ## TODO
- - [ ] Replace Microsoft API with local neural network implmentatoin
+ - [ ] Add local neural network implementation (eg, Caffe)
+ - [ ] Add Google Cloud Vision API
