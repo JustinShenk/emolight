@@ -13,17 +13,14 @@ from urllib.parse import urlencode
 _url = 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize'
 _maxNumRetries = 10
 
-MY_API = 'INSERT_MY_EMOTION_API'
-
 
 class Emotion_API(object):
     """Get Emotions results from Microsoft Oxford API."""
 
     def __init__(self):
         self.config = configparser.ConfigParser()
-        self.config['Microsoft'] = {'api': MY_API}
+        self.config.read('config.ini')
 
-    @classmethod
     def get_emotions(self, image_path, local=True):
         """ Send image to Microsoft/Oxford emotion API."""
         headers = dict()
@@ -45,7 +42,6 @@ class Emotion_API(object):
             print("Emotions found:", result)
         return result, callback
 
-    @classmethod
     def processRequest(self, json, data, headers, params):
         """
         Helper function to process the request to Project Oxford
