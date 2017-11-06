@@ -47,6 +47,8 @@ def get_emotion_scores(emo, filename='image.jpg'):
         scores = results[0]['scores']
     except IndexError:
         print("No faces found.")
+    except TypeError:
+        print("Make sure your API key is correct.")
 
     # Get most likely emotion
     top_emotion = max(scores, key=lambda key: scores[key])
@@ -94,8 +96,8 @@ def main(single=False, delay=10):
             os.system('sudo fswebcam image.jpg')
             # Initialize emotion API
             emo = Emotion_API()
-            scores = get_emotion_scores(emo)
-            color = get_colors(scores)
+            scores, top_emotion = get_emotion_scores(emo)
+            color = get_colors(scores, top_emotion)
             color = Color(RGB[0], RGB[1], RGB[2])
             display_color(strip, color)
             time.sleep(delay)
