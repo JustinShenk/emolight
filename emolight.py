@@ -4,6 +4,7 @@ import argparse
 import operator
 import collections
 
+
 from neopixel import *
 from emotion_API import Emotion_API
 
