@@ -106,7 +106,7 @@ if __name__ == '__main__':
                         help="display single RGB or hex color (eg, 255x255x255 or #FFFFFF)")
     parser.add_argument("-s", "--single",
                         help="update lights with a single photo", action="store_true")
-    parser.add_argument("-d", "--delay", type=int
+    parser.add_argument("-d", "--delay", type=int,
                         help="time delay between emotion sensing (in seconds)")
     args = parser.parse_args()
 
