@@ -42,7 +42,10 @@ def get_emotion_scores(emo, filename='image.jpg'):
     results, _ = emo.get_emotions(filename)
 
     # Take first face detected
-    scores = results[0]['scores']
+    try:
+        scores = results[0]['scores']
+    except IndexError:
+        print("No faces found.")
 
     # Get most likely emotion
     top_emotion = max(scores, key=lambda key: scores[key])
