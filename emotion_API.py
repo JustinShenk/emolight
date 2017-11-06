@@ -1,12 +1,13 @@
 #!/ usr/bin/env python
 import os
-import http.client
 import json
 import time
 import requests
 import configparser
 
 from requests import ConnectionError
+from future.standard_library import install_aliases
+install_aliases()
 from urllib.parse import urlencode
 
 _url = 'https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize'
