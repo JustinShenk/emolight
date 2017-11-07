@@ -1,4 +1,5 @@
 import os
+import sys
 import time
 import argparse
 import operator
@@ -48,8 +49,10 @@ def get_emotion_scores(emo, filename='image.jpg'):
         scores = results[0]['scores']
     except IndexError:
         print("No faces found.")
+        return None, None
     except TypeError:
         print("Make sure your API key is correct.")
+        sys.exit()
 
     # Get most likely emotion
     top_emotion = max(scores, key=lambda key: scores[key])
@@ -86,17 +89,21 @@ def main(single=False, delay=10):
     # Initialize emotion API
     emo = Emotion_API()
     if single:
-        os.system('sudo fswebcam --no-banner image.jpg')
-        while not os.path.exists('image.jpg'):
+        photo = None
+        while photo is None:
             os.system('sudo fswebcam --no-banner image.jpg')
-            time.sleep(3)
-        scores, top_emotion = get_emotion_scores(emo)
-        _color = get_colors(scores, top_emotion)
-        color = Color(*_color)
-        print("Displaying {}".format(_color))
-        display_color(strip, color)
-
-        input("Press Enter to exit...")
+            while not os.path.exists('image.jpg'):
+                os.system('sudo fswebcam --no-banner image.jpg')
+                time.sleep(3)
+            scores, top_emotion = get_emotion_scores(emo)
+            if scores == None:  # No emotions detected
+                continue
+            _color = get_colors(scores, top_emotion)
+            color = Color(*_color)
+            print("Displaying {}".format(_color))
+            display_color(strip, color)
+            photo = True
+            input("Press Enter to exit...")
     else:  # looping
         while True:
             os.system('sudo fswebcam --no-banner image.jpg')
@@ -106,6 +113,8 @@ def main(single=False, delay=10):
             # Initialize emotion API
             emo = Emotion_API()
             scores, top_emotion = get_emotion_scores(emo)
+            if scores == None:
+                continue
             _color = get_colors(scores, top_emotion)
             color = Color(*_color)
             display_color(strip, color)
