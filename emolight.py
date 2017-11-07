@@ -26,7 +26,7 @@ def display_color(strip, color):
     """Display `color`."""
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
-    print("Showing {}".format(color))
+    print("Showing {0} {1} {2}".format(*color))
     strip.show()
     time.sleep(10)
 
