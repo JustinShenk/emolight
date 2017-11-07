@@ -77,8 +77,8 @@ def get_colors(scores, top_emotion):
             green += scores[e]
         if e in ['neutral', 'sadness']:
             blue += scores[e]
-    color = [int(c * 255) for c in [red, green, blue]]
-    print("Red: {}, Green: {}, Blue: {}".format(color[0], color[1], color[2]))
+    _color = [int(c * 255) for c in [red, green, blue]]
+    print("Red: {}, Green: {}, Blue: {}".format(*_color))
     return color
 
 
@@ -97,6 +97,7 @@ def main(single=False, delay=10):
     else:  # looping
         while True:
             os.system('sudo fswebcam --no-banner image.jpg')
+            time.sleep(4)
             # Initialize emotion API
             emo = Emotion_API()
             scores, top_emotion = get_emotion_scores(emo)
