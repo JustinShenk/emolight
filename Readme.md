@@ -1,7 +1,7 @@
 emolight
 ========
 
-Convert emotions to LED colors on a Raspberry Pi. Demoed at Intel Global IoT DevFest.
+Convert emotions to LED colors on a Raspberry Pi (development stage). Demoed at Intel Global IoT DevFest.
 
 This script can be used for controlling WS281X LED strips with a Raspberry Pi. Several wiring guides exist:
 - https://learn.adafruit.com/neopixels-on-raspberry-pi/wiring
@@ -62,3 +62,4 @@ Run the script with a new image every minute with `sudo python emolight.py -d 60
  - [ ] Add Google Cloud Vision API
  - [ ] Add picamera support
  - [ ] Add make file
+ - [ ] Add color fading option
