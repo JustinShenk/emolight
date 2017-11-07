@@ -41,13 +41,14 @@ Clone the repository install dependencies:
 git clone https://github.com/justinshenk/moodlight.git
 cd moodlight
 pip install -r requirements.txt
+cp config.ini.example config.ini
 ```
 
 #### Webcam
 If using a webcam, install fswebcam with `sudo apt-get install fswebcam`.
 
 #### Emotion Detection
-Get a [Microsoft Emotion API key](https://azure.microsoft.com/en-us/try/cognitive-services/?api=emotion-api) (free trial) and add your key to `MY_API` in `emotion_API.py`.
+Get a [Microsoft Emotion API key](https://azure.microsoft.com/en-us/try/cognitive-services/?api=emotion-api) (free trial) and add your key to `MY_API` in `config.ini`.
 
 #### Start moodlight
 For setting the LED strip with a single image run
