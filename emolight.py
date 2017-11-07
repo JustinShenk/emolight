@@ -26,7 +26,9 @@ def display_color(strip, color):
     """Display `color`."""
     for i in range(strip.numPixels()):
         strip.setPixelColor(i, color)
+    print("Showing {}".format(color))
     strip.show()
+    time.sleep(10)
 
 
 def color_wipe(strip, color, wait_ms=50):
@@ -70,13 +72,13 @@ def get_colors(scores, top_emotion):
         color = Color(0, 0, 255)  # blue
         return color
     for e in scores.keys():
-        if e in ['anger', 'fear', 'happiness', 'neutral']:
+        if e in ['anger', 'fear', 'happiness']:
             red += scores[e]
-        if e in ['disgust', 'surprise', 'contempt', 'happiness', 'neutral']:
+        if e in ['disgust', 'surprise', 'contempt', 'happiness']:
             green += scores[e]
-        if e in ['neutral', 'sadness', 'happiness']:
+        if e in ['neutral', 'sadness']:
             blue += scores[e]
-    color = [int(c * 255) & 255 for c in [red, green, blue]]
+    color = [int(c * 255) for c in [red, green, blue]]
     print("Red: {}, Green: {}, Blue: {}".format(color[0], color[1], color[2]))
     return color
 
@@ -120,7 +122,7 @@ if __name__ == '__main__':
     # Initialize the library
     strip.begin()
 
-    if args.color:
+    if args.color:  # Display single color
         if '#' in args.color:
             # Convert hex to Color
             color = args.color.lstrip('#')
@@ -128,7 +130,8 @@ if __name__ == '__main__':
         else:
             # Extract RGB int values from string
             color = args.color.split('x')
-            color = Color(tuple(color))
+            color = [int(x) for x in color]
+            color = Color(*tuple(color))
         while True:
             display_color(strip, color)
     if args.delay:
