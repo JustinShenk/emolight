@@ -53,7 +53,7 @@ class Emotion_API(object):
         headers: Used to pass the key information and the data type request
         """
 
-        retries = None
+        retries = 0
         result = None
         callback = None
 
@@ -73,7 +73,7 @@ class Emotion_API(object):
                 print("Message: %s" % (response.json()['error']['message']))
 
                 if retries <= _maxNumRetries:
-                    time.sleep(1)
+                    time.sleep(4)
                     retries += 1
                     continue
                 else:
