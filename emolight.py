@@ -88,9 +88,11 @@ def main(single=False, delay=10):
     if single:
         os.system('sudo fswebcam image.jpg')
         scores, top_emotion = get_emotion_scores(emo)
-        color = get_colors(scores, top_emotion)
-        color = Color(RGB[0], RGB[1], RGB[2])
+        _color = get_colors(scores, top_emotion)
+        color = Color(_color[0], _color[1], _color[2])
+        print("Displaying {}".format(_color))
         display_color(strip, color)
+
         input("Press Enter to exit...")
     else:  # looping
         while True:
