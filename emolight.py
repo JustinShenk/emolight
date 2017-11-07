@@ -86,7 +86,10 @@ def main(single=False, delay=10):
     # Initialize emotion API
     emo = Emotion_API()
     if single:
-        os.system('sudo fswebcam image.jpg')
+        os.system('sudo fswebcam --no-banner image.jpg')
+        while not os.path.exists('image.jpg'):
+            os.system('sudo fswebcam --no-banner image.jpg')
+            time.sleep(3)
         scores, top_emotion = get_emotion_scores(emo)
         _color = get_colors(scores, top_emotion)
         color = Color(*_color)
@@ -97,7 +100,9 @@ def main(single=False, delay=10):
     else:  # looping
         while True:
             os.system('sudo fswebcam --no-banner image.jpg')
-            time.sleep(4)
+            while not os.path.exists('image.jpg'):
+                os.system('sudo fswebcam --no-banner image.jpg')
+                time.sleep(3)
             # Initialize emotion API
             emo = Emotion_API()
             scores, top_emotion = get_emotion_scores(emo)
