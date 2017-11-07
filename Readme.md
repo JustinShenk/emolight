@@ -1,4 +1,4 @@
-emolight
+moodlight
 ========
 
 Convert emotions to LED colors on a Raspberry Pi (development stage). Demoed at Intel Global IoT DevFest.
@@ -34,12 +34,12 @@ cd python
 python ./setup.py build
 ```
 
-#### Fetch emolight
+#### Fetch moodlight
 
 Clone the repository install dependencies:
 ```sh
-git clone https://github.com/justinshenk/emolight.git
-cd emolight
+git clone https://github.com/justinshenk/moodlight.git
+cd moodlight
 pip install -r requirements.txt
 ```
 
@@ -49,13 +49,13 @@ If using a webcam, install fswebcam with `sudo apt-get install fswebcam`.
 #### Emotion Detection
 Get a [Microsoft Emotion API key](https://azure.microsoft.com/en-us/try/cognitive-services/?api=emotion-api) (free trial) and add your key to `MY_API` in `emotion_API.py`.
 
-#### Start emolight
+#### Start moodlight
 For setting the LED strip with a single image run
-`sudo python emolight.py -s`.
+`sudo python moodlight.py -s`.
 
-To run the script indefinitely, run `sudo python emolight.py`.
+To run the script indefinitely, run `sudo python moodlight.py`.
 
-Run the script with a new image every minute with `sudo python emolight.py -d 60`.
+Run the script with a new image every minute with `sudo python moodlight.py -d 60`.
 
 ## TODO
  - [ ] Add local neural network implementation (eg, Caffe)
