@@ -89,7 +89,7 @@ def main(single=False, delay=10):
         os.system('sudo fswebcam image.jpg')
         scores, top_emotion = get_emotion_scores(emo)
         _color = get_colors(scores, top_emotion)
-        color = Color(_color)
+        color = Color(*_color)
         print("Displaying {}".format(_color))
         display_color(strip, color)
 
@@ -102,7 +102,7 @@ def main(single=False, delay=10):
             emo = Emotion_API()
             scores, top_emotion = get_emotion_scores(emo)
             _color = get_colors(scores, top_emotion)
-            color = Color(_color)
+            color = Color(*_color)
             display_color(strip, color)
             time.sleep(delay)
 
@@ -131,10 +131,10 @@ if __name__ == '__main__':
             color = Color(tuple(int(h[i:i + 2], 16) for i in (0, 2, 4)))
         else:
             # Extract RGB int values from string
-            color = args.color.split('x')
-            color = [int(x) for x in color]
-            print("Displaying {}".format(color))
-            color = Color(*tuple(color))
+            _color = args.color.split('x')
+            _color = [int(x) for x in _color]
+            print("Displaying {}".format(_color))
+            color = Color(*tuple(_color))
         while True:
             display_color(strip, color)
     if args.delay:
