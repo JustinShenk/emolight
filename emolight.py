@@ -93,12 +93,12 @@ def main(single=False, delay=10):
         input("Press Enter to exit...")
     else:  # looping
         while True:
-            os.system('sudo fswebcam image.jpg')
+            os.system('sudo fswebcam --no-banner image.jpg')
             # Initialize emotion API
             emo = Emotion_API()
             scores, top_emotion = get_emotion_scores(emo)
             color = get_colors(scores, top_emotion)
-            color = Color(RGB[0], RGB[1], RGB[2])
+            color = Color(color[0], color[1], color[2])
             display_color(strip, color)
             time.sleep(delay)
 
