@@ -62,13 +62,13 @@ def get_colors(scores, top_emotion):
     red = green = blue = 0
     # For warm and cold emotions, return solid color
     if top_emotion == 'anger':
-        color = Color(255, 0, 0)  # red
+        color = (255, 0, 0)  # red
         return color
     elif top_emotion == 'fear':
-        color = Color(255, 255, 0)  # yellow
+        color = (255, 255, 0)  # yellow
         return color
     elif top_emotion in ['sadness', 'contempt']:
-        color = Color(0, 0, 255)  # blue
+        color = (0, 0, 255)  # blue
         return color
     for e in scores.keys():
         if e in ['anger', 'fear', 'happiness']:
@@ -77,8 +77,8 @@ def get_colors(scores, top_emotion):
             green += scores[e]
         if e in ['neutral', 'sadness']:
             blue += scores[e]
-    _color = [int(c * 255) for c in [red, green, blue]]
-    print("Red: {}, Green: {}, Blue: {}".format(*_color))
+    color = [int(c * 255) for c in [red, green, blue]]
+    print("Red: {}, Green: {}, Blue: {}".format(*color))
     return color
 
 
@@ -89,7 +89,7 @@ def main(single=False, delay=10):
         os.system('sudo fswebcam image.jpg')
         scores, top_emotion = get_emotion_scores(emo)
         _color = get_colors(scores, top_emotion)
-        color = Color(_color[0], _color[1], _color[2])
+        color = Color(_color)
         print("Displaying {}".format(_color))
         display_color(strip, color)
 
@@ -101,8 +101,8 @@ def main(single=False, delay=10):
             # Initialize emotion API
             emo = Emotion_API()
             scores, top_emotion = get_emotion_scores(emo)
-            color = get_colors(scores, top_emotion)
-            color = Color(color[0], color[1], color[2])
+            _color = get_colors(scores, top_emotion)
+            color = Color(_color)
             display_color(strip, color)
             time.sleep(delay)
 
